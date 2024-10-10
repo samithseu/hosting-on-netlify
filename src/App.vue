@@ -20,7 +20,7 @@ export default {
   <nav>
     <button @click="changeLocale('en')">English</button>
     <button @click="changeLocale('km')">ភាសាខ្មែរ</button>
-    <button @click="toggleLocale">CHANGE</button>
+    <button @click="toggleLocale">ផ្លាស់ប្ដូរ</button>
   </nav>
   <p>{{ $t("welcome") }}</p>
   <p>{{ $t("message") }}</p>

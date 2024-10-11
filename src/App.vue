@@ -75,6 +75,7 @@ nav {
   padding-block: 1rem;
   border-bottom: 1px solid white;
   margin-bottom: 1.5rem;
+  z-index: 99;
 }
 button {
   outline: 0;
@@ -93,7 +94,7 @@ button {
 button svg {
   aspect-ratio: initial;
   height: 24px;
-  width: max-content;
+  width: max-content !important;
 }
 button svg {
   transition: fill 250ms ease-in-out;

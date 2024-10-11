@@ -1,6 +1,6 @@
 <script>
 import LanguageIcon from "./LanguageIcon.vue";
-import mapJPG from "./assets/map.jpg";
+import mapJPG from "./assets/map.webp";
 
 export default {
   components: { LanguageIcon },
@@ -27,7 +27,7 @@ export default {
   <nav>
     <button @click="toggleLocale">ប្ដូរភាសា <LanguageIcon /></button>
   </nav>
-  <img :src="mapJPG" alt="Khmer Old Map" class="map" />
+  <img height="400px" :src="mapJPG" alt="Khmer Old Map" class="map" />
   <p class="txt">{{ $t("txt") }}</p>
 </template>
 
@@ -85,7 +85,6 @@ p {
 .map {
   width: min(800px, calc(100% - 4rem));
   margin-inline: auto;
-  height: 400px;
   aspect-ratio: initial;
   object-fit: cover;
   border-radius: 1rem;

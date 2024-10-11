@@ -42,7 +42,6 @@ export default {
       document.head.appendChild(ogDescTag);
     }
 
-    // Set the content attribute to the image URL
     ogImageTag.setAttribute("content", mapJPG);
     ogTitleTag.setAttribute("content", "Short Khmer History");
     ogDescTag.setAttribute(

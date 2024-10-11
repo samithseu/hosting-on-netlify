@@ -95,15 +95,7 @@ button svg {
   aspect-ratio: initial;
   height: 24px;
 }
-button svg {
-  transition: fill 250ms ease-in-out;
-}
-button:hover {
-  color: cyan;
-}
-button:hover * {
-  fill: cyan;
-}
+
 p {
   text-align: center;
   color: white;

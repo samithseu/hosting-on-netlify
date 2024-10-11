@@ -3,7 +3,6 @@
     width="203"
     height="122"
     viewBox="0 0 203 122"
-    fill="white"
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
@@ -19,8 +18,12 @@
 export default {};
 </script>
 
-<style>
+<style scoped>
 svg {
-  width: max-content;
+  width: max-content !important;
+}
+svg path {
+  fill: white;
+  transition: 250ms ease-in-out;
 }
 </style>

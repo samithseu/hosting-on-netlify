@@ -18,3 +18,9 @@
 <script>
 export default {};
 </script>
+
+<style>
+svg {
+  width: max-content;
+}
+</style>

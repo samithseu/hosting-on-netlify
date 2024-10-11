@@ -20,6 +20,36 @@ export default {
       }
     },
   },
+  mounted() {
+    let ogImageTag = document.querySelector('meta[property="og:image"]');
+    if (!ogImageTag) {
+      ogImageTag = document.createElement("meta");
+      ogImageTag.setAttribute("property", "og:image");
+      document.head.appendChild(ogImageTag);
+    }
+
+    let ogTitleTag = document.querySelector('meta[property="og:title"]');
+    if (!ogTitleTag) {
+      ogTitleTag = document.createElement("meta");
+      ogTitleTag.setAttribute("property", "og:title");
+      document.head.appendChild(ogTitleTag);
+    }
+
+    let ogDescTag = document.querySelector('meta[property="og:description"]');
+    if (!ogDescTag) {
+      ogDescTag = document.createElement("meta");
+      ogDescTag.setAttribute("property", "og:description");
+      document.head.appendChild(ogDescTag);
+    }
+
+    // Set the content attribute to the image URL
+    ogImageTag.setAttribute("content", mapJPG);
+    ogTitleTag.setAttribute("content", "Short Khmer History");
+    ogDescTag.setAttribute(
+      "content",
+      "Using I18n for switching language about short Khmer history."
+    );
+  },
 };
 </script>
 

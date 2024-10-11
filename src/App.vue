@@ -94,7 +94,6 @@ button {
 button svg {
   aspect-ratio: initial;
   height: 24px;
-  width: max-content !important;
 }
 button svg {
   transition: fill 250ms ease-in-out;

@@ -1,12 +1,13 @@
 <script>
 import LanguageIcon from "./LanguageIcon.vue";
 import mapJPG from "./assets/map.webp";
+import { ref } from "vue";
 
 export default {
   components: { LanguageIcon },
   name: "App",
   setup() {
-    return { mapJPG };
+    return { mapJPG, ref };
   },
   methods: {
     changeLocale(locale) {
@@ -19,6 +20,9 @@ export default {
         this.$i18n.locale = "en";
       }
     },
+    handleClick() {
+      window.open(this.$refs.img.src, "_blank");
+    },
   },
 };
 </script>
@@ -27,7 +31,14 @@ export default {
   <nav>
     <button @click="toggleLocale">ប្ដូរភាសា <LanguageIcon /></button>
   </nav>
-  <img height="400px" :src="mapJPG" alt="Khmer Old Map" class="map" />
+  <img
+    @click="handleClick"
+    ref="img"
+    height="400px"
+    :src="mapJPG"
+    alt="Khmer Old Map"
+    class="map"
+  />
   <p class="txt">{{ $t("txt") }}</p>
 </template>
 
@@ -87,13 +98,15 @@ p {
   margin-inline: auto;
   aspect-ratio: initial;
   object-fit: cover;
-  border-radius: 1rem;
-  transition: all 450ms ease-in-out;
-  border: 4px solid rgba(255, 255, 255, 0);
-  filter: grayscale(1);
+  border-radius: 0.5rem;
+  transition: all 300ms ease-in-out;
+  filter: grayscale(1) contrast(120%);
+  box-shadow: 5px 5px 0px rgba(0, 255, 255, 0);
 }
 .map:hover {
-  border: 4px solid cyan;
-  filter: grayscale(0) saturate(105%);
+  filter: grayscale(0) contrast(100%) saturate(105%);
+  translate: -5px -5px;
+  box-shadow: 5px 5px 0px rgb(0, 255, 255);
+  cursor: zoom-in;
 }
 </style>

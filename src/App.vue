@@ -1,13 +1,51 @@
+<template>
+  <nav ref="nav">
+    <button @click="toggleLocale">ប្ដូរភាសា <LanguageIcon /></button>
+  </nav>
+  <img
+    @click="handleClick"
+    ref="image"
+    height="400px"
+    :src="mapJPG"
+    alt="Khmer Old Map"
+    class="map"
+  />
+  <p ref="text" class="txt">{{ $t("txt") }}</p>
+</template>
+
 <script>
 import LanguageIcon from "./LanguageIcon.vue";
 import mapJPG from "./assets/map.webp";
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
+import { gsap } from "gsap";
 
 export default {
   components: { LanguageIcon },
   name: "App",
   setup() {
-    return { mapJPG, ref };
+    const nav = ref(null);
+    const image = ref(null);
+    const text = ref(null);
+
+    onMounted(() => {
+      gsap.fromTo(
+        nav.value,
+        { filter: "blur(12px)" },
+        { filter: "blur(0px)", delay: 0.025 }
+      );
+      gsap.fromTo(
+        image.value,
+        { opacity: 0, filter: "blur(12px)", y: 50 },
+        { opacity: 1, filter: "blur(0px)", y: 0, delay: 0.05 }
+      );
+      gsap.fromTo(
+        text.value,
+        { opacity: 0, filter: "blur(12px)", y: 50 },
+        { opacity: 1, filter: "blur(0px)", y: 0, delay: 0.1 }
+      );
+    });
+
+    return { mapJPG, nav, image, text };
   },
   methods: {
     changeLocale(locale) {
@@ -21,28 +59,13 @@ export default {
       }
     },
     handleClick() {
-      window.open(this.$refs.img.src, "_blank");
+      window.open(this.image.src, "_blank");
     },
   },
 };
 </script>
 
-<template>
-  <nav>
-    <button @click="toggleLocale">ប្ដូរភាសា <LanguageIcon /></button>
-  </nav>
-  <img
-    @click="handleClick"
-    ref="img"
-    height="400px"
-    :src="mapJPG"
-    alt="Khmer Old Map"
-    class="map"
-  />
-  <p class="txt">{{ $t("txt") }}</p>
-</template>
-
-<style scoped>
+<style>
 nav {
   position: sticky;
   top: 0;
@@ -99,14 +122,13 @@ p {
   aspect-ratio: initial;
   object-fit: cover;
   border-radius: 0.5rem;
-  transition: all 300ms ease-in-out;
-  filter: grayscale(1) contrast(120%);
-  box-shadow: 5px 5px 0px rgba(0, 255, 255, 0);
+  border: 3px solid rgba(0, 255, 255, 0);
+  transition: border 250ms ease-out;
+  margin-block: 1.2rem;
 }
 .map:hover {
   filter: grayscale(0) contrast(100%) saturate(105%);
-  translate: -5px -5px;
-  box-shadow: 5px 5px 0px rgb(0, 255, 255);
+  border: 3px solid rgb(0, 255, 255);
   cursor: zoom-in;
 }
 </style>
